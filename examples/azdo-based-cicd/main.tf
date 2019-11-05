@@ -45,23 +45,21 @@ resource "azuredevops_build_definition" "build" {
   # https://github.com/microsoft/terraform-provider-azuredevops/issues/171
   # variables_groups = [azuredevops_variable_group.vg.id]
 }
-#
-# https://github.com/microsoft/terraform-provider-azuredevops/issues/170
-# resource "azuredevops_variable_group" "vg" {
-#   project_id   = azuredevops_project.id
-#   name         = "Sample VG 1"
-#   allow_access = true
-#   variables {
-#     key       = "key1"
-#     value     = "value1"
-#     is_secret = true
-#   }
-#   variables {
-#     key   = "key2"
-#     value = "value2"
-#   }
-# }
 
+// This section configures an Azure DevOps Variable Group
+# https://github.com/microsoft/terraform-provider-azuredevops/issues/170
+resource "azuredevops_variable_group" "vg" {
+  project_id   = azuredevops_project.project.id
+  name         = "Sample VG 1"
+  allow_access = true
+
+  variables {
+    key1 {
+      value = "value1"
+      is_secret = true
+    }
+  }
+}
 
 // This section configures an Azure DevOps Git Repository with branch policies
 resource "azuredevops_azure_git_repository" "repository" {
