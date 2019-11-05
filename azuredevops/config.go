@@ -30,7 +30,7 @@ type aggregatedClient struct {
 	GraphClient                   graph.Client
 	OperationsClient              operations.Client
 	ServiceEndpointClient         serviceendpoint.Client
-	TaskAgent                     taskagent.Client
+	TaskAgentClient               taskagent.Client
 	MemberEntitleManagementClient memberentitlementmanagement.Client
 	ctx                           context.Context
 }
